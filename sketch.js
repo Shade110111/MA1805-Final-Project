@@ -1,4 +1,7 @@
 let held_item = ("null");
+let prep_cup = false;
+let prep_milk = false;
+let prep_boba = false;
 
 function setup() {
   window_x = (windowWidth);
@@ -22,7 +25,9 @@ function draw() {
 
   fill(225,0,225);
   square(7*chunk, 5*chunk, chunk)
+
   text(held_item,100,100)
+
 }
 
 function mousePressed() {
@@ -51,9 +56,14 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-  if (mouseX>10*chunk && mouseX<15*chunk && mouseY>5*chunk && mouseY<13*chunk){
+  if (mouseX>10*chunk && mouseX<15*chunk && mouseY>5*chunk && mouseY<13*chunk){ //mouse released on prep station
+    if (held_item != "old_cup" && held_item != "fresh_cup" && prep_cup==false){
+      held_item=("null"); //nothing will happen if you try to use milk or boba without a cup
+      held_item = "trigger"
+    }
+
   }
   else{
-    held_item=("null");
+    held_item=("null"); //mouse not released on prep station
   }
 }
