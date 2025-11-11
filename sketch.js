@@ -2,10 +2,11 @@ let held_item = ("null");
 let prep_cup = false;
 let prep_milk = false;
 let prep_boba = false;
+let money = 0;
 
 function setup() {
   window_x = (windowWidth);
-  window_y = (windowWidth*0.5625);
+  window_y = (windowWidth*0.6);
   createCanvas(window_x, window_y);
 }
 
