@@ -5,6 +5,7 @@ let prep_boba = false;
 let money = 0;
 
 function setup() {
+  //background is 125x75 pixels, each chunk is 5 pixels.
   window_x = (windowWidth);
   window_y = (windowWidth*0.6);
   createCanvas(window_x, window_y);
