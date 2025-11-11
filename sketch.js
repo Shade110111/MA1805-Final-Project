@@ -1,7 +1,8 @@
 let held_item = ("null");
 let prep_cup = false;
-let prep_milk = false;
-let prep_boba = false;
+let prep_milk = 0; //requires two scoops
+let prep_boba = 0; //requires two scoops
+let anger = 0; //two bad items and no tip, three bad items and no pay.
 let money = 0;
 
 function setup() {
@@ -26,12 +27,12 @@ function draw() {
   rect(10*chunk, 5*chunk,5*chunk,8*chunk)
 
   fill(225,0,225);
-  square(7*chunk, 5*chunk, chunk)
 
   text(held_item,100,100)
   text(prep_cup,100,120)
   text(prep_milk,100,140)
   text(prep_boba,100,160)
+  text(anger,100,180)
 }
 
 function mousePressed() {
@@ -66,12 +67,21 @@ function mouseReleased() {
     } 
     else if ((held_item == "old_cup" || held_item == "fresh_cup")&&prep_cup==false){
       prep_cup=true
+      if (held_item == "old_cup"){
+        anger += 1
+      }
     }
-    else if ((held_item == "old_milk" || held_item == "fresh_milk")&&prep_milk==false){
-      prep_milk=true
+    else if ((held_item == "old_milk" || held_item == "fresh_milk")&&(prep_milk==0 || prep_milk==1)){
+      prep_milk += 1
+      if (held_item == "old_milk"){
+        anger += 1
+      }
     }
-    else if ((held_item == "old_boba" || held_item == "fresh_boba")&&prep_boba==false){
-      prep_boba=true
+    else if ((held_item == "old_boba" || held_item == "fresh_boba")&&(prep_boba==0 || prep_boba==1)){
+      prep_boba +=1
+      if (held_item == "old_boba"){
+        anger += 1
+      }
     }
   }
   else{
