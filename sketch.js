@@ -33,6 +33,9 @@ function draw() {
   text(prep_milk,100,140)
   text(prep_boba,100,160)
   text(anger,100,180)
+
+  if (anger > 3) { anger = 3}
+  rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.5*chunk)
 }
 
 function mousePressed() {
