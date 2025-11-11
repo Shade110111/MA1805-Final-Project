@@ -4,6 +4,8 @@ let prep_milk = 0; //requires two scoops
 let prep_boba = 0; //requires two scoops
 let anger = 0; //two bad items and no tip, three bad items and no pay.
 let money = 0;
+let this_sale = 5;
+let tip = 2;
 
 function setup() {
   //background is 125x75 pixels, each chunk is 5 pixels.
@@ -28,14 +30,22 @@ function draw() {
 
   fill(225,0,225);
 
+  //test print values
   text(held_item,100,100)
   text(prep_cup,100,120)
   text(prep_milk,100,140)
   text(prep_boba,100,160)
   text(anger,100,180)
 
-  if (anger > 3) { anger = 3}
-  rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.5*chunk)
+  if (anger > 3) { anger = 3} //normalise anger
+  rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.5*chunk) //anger bar
+  //anger based payment managment
+  if (anger >= 2) {tip = 0}
+  if (anger >= 3) {this_sale = 0}
+
+  text(money,chunk,14*chunk) //display money
+  text(this_sale+"+"+tip,21*chunk,14*chunk) //display this sale and tip
+
 }
 
 function mousePressed() {
