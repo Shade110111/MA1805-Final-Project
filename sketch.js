@@ -47,8 +47,8 @@ function draw() {
   text(money,chunk,14*chunk) //display money
   text(this_sale+"+"+tip,21*chunk,14*chunk) //display this sale and tip
 
-  if (prep_cup == true && prep_milk == 2 && prep_boba == 2){
-    rect(16.3*chunk, 11.5*chunk,3.5*chunk,1.2*chunk)
+  if (prep_cup == true && prep_milk == 2 && prep_boba == 2){ //completed drink detection
+    rect(16.4*chunk, 11.4*chunk,3.6*chunk,1.2*chunk)
     drink_complete = true
   }
 
@@ -76,6 +76,10 @@ function mousePressed() {
     else if (mouseY > 9*chunk && mouseY < 12*chunk) { //boba
       held_item = ("old_boba")
     }
+  }
+
+  if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk){ //submit drink detection
+    
   }
 }
 
