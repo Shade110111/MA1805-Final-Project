@@ -3,9 +3,9 @@ let prep_cup = false;
 let prep_milk = 0; //requires two scoops
 let prep_boba = 0; //requires two scoops
 let anger = 0; //two bad items and no tip, three bad items and no pay.
-let money = 0;
-let this_sale = 5;
-let tip = 2;
+let money = 10;
+let this_sale = 6;
+let tip = 1;
 let drink_complete = false;
 let background_image;
 
@@ -25,6 +25,8 @@ function setup() {
 function draw() {
   image(background_image,0,0,window_x,window_y);
   chunk = window_x/25 //a chunk is a workable unit of measurment for colliders
+  
+  /*visualise colliders
   fill(255,255,255);
   square(chunk, chunk, 3*chunk)
   square(chunk, 5*chunk, 3*chunk)
@@ -33,17 +35,26 @@ function draw() {
   square(21*chunk, 5*chunk, 3*chunk)
   square(21*chunk, 9*chunk, 3*chunk)
 
-  rect(10*chunk, 5*chunk,5*chunk,8*chunk)
+  rect(10*chunk, 5*chunk,5*chunk,8*chunk)*/
 
-  fill(226,52,52);
+  
 
-  //test print values
+  //Prices
+  fill(31,25,30);
+  textSize(0.6*chunk);
+  text("£1.00",6*chunk,5.3*chunk)//cup price
+  text("£1.20",6*chunk,9.3*chunk)//milk price
+  text("£1.50",6*chunk,12.1*chunk)//boba price
+
+  /*test print values
   text(held_item,100,100)
   text(prep_cup,100,120)
   text(prep_milk,100,140)
   text(prep_boba,100,160)
-  text(drink_complete,100,180)
+  text(drink_complete,100,180)*/
 
+  fill(226,52,52);
+  strokeWeight(0);
   if (anger > 3) { anger = 3} //normalise anger
   rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.6*chunk) //anger bar
   //anger based payment managment
@@ -84,8 +95,9 @@ function mousePressed() {
     }
   }
 
-  if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk){ //submit drink detection
-    
+  if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk && drink_complete == true){ //submit drink detection
+    money += this_sale + tip
+    ResetGame()
   }
 }
 
@@ -116,4 +128,15 @@ function mouseReleased() {
   else{
     held_item=("null"); //mouse not released on prep station
   }
+}
+
+function ResetGame() {
+  held_item = ("null");
+  prep_cup = false;
+  prep_milk = 0; //requires two scoops
+  prep_boba = 0; //requires two scoops
+  anger = 0; //two bad items and no tip, three bad items and no pay.
+  this_sale = 5;
+  tip = 2;
+  drink_complete = false;
 }
