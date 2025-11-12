@@ -7,17 +7,23 @@ let money = 0;
 let this_sale = 5;
 let tip = 2;
 let drink_complete = false;
+let background_image;
+
+function preload() {
+  background_image = loadImage('background.png');
+}
 
 function setup() {
   //background is 125x75 pixels, each chunk is 5 pixels.
   window_x = (windowWidth);
   window_y = (windowWidth*0.6);
   createCanvas(window_x, window_y);
+  noSmooth(); //sharpens pixel art
 }
 
 
 function draw() {
-  background(150);
+  image(background_image,0,0,window_x,window_y);
   chunk = window_x/25 //a chunk is a workable unit of measurment for colliders
   fill(255,255,255);
   square(chunk, chunk, 3*chunk)
@@ -29,7 +35,7 @@ function draw() {
 
   rect(10*chunk, 5*chunk,5*chunk,8*chunk)
 
-  fill(225,0,225);
+  fill(226,52,52);
 
   //test print values
   text(held_item,100,100)
@@ -39,7 +45,7 @@ function draw() {
   text(drink_complete,100,180)
 
   if (anger > 3) { anger = 3} //normalise anger
-  rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.5*chunk) //anger bar
+  rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.6*chunk) //anger bar
   //anger based payment managment
   if (anger >= 2) {tip = 0}
   if (anger >= 3) {this_sale = 0}
