@@ -12,6 +12,9 @@ let cup_image;
 let cup_translucent_image;
 let prep_boba_image_1;
 let prep_boba_image_2;
+let prep_milk_image_1;
+let prep_milk_image_2;
+let prep_milk_image_boba;
 
 function preload() {
   background_image = loadImage('background.png');
@@ -19,6 +22,9 @@ function preload() {
   cup_translucent_image = loadImage('Cup Translucent.png');
   prep_boba_image_1 = loadImage('prep_boba_image_1.png');
   prep_boba_image_2 = loadImage('prep_boba_image_2.png');
+  prep_milk_image_1 = loadImage('prep_milk 1.png');
+  prep_milk_image_2 = loadImage('prep_milk 2.png');
+  prep_milk_image_boba = loadImage('prep_milk boba.png');
 }
 
 function setup() {
@@ -71,6 +77,8 @@ function draw() {
   strokeWeight(0);
   if (anger > 3) { anger = 3} //normalise anger
   rect(8*chunk, 14*chunk, 9*chunk*(anger/3), 0.6*chunk) //anger bar
+  textSize(0.5*chunk);
+  text("RAGE",11.8*chunk,13.9*chunk);
   //anger based payment managment
   if (anger >= 2) {tip = 0}
   if (anger >= 3) {this_sale = 0}
@@ -84,11 +92,21 @@ function draw() {
   if (prep_cup == true){
     image(cup_image,0,0,window_x,window_y);
   }
-  if (prep_boba == 1){
+  if (prep_milk == 1){
+    image(prep_milk_image_1,0,0,window_x,window_y);
+  }
+  else if (prep_milk == 2){
+    image(prep_milk_image_2,0,0,window_x,window_y);
+  }
+  else if (prep_boba == 1){
     image(prep_boba_image_1,0,0,window_x,window_y);
   }
   else if (prep_boba == 2){
     image(prep_boba_image_2,0,0,window_x,window_y);
+
+  }
+  if (prep_milk == 2 && prep_boba != 0){
+    image(prep_milk_image_boba,0,0,window_x,window_y);
   }
 
   if (prep_cup == true){ //translucent cup film
