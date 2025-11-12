@@ -42,9 +42,15 @@ function draw() {
   //Prices
   fill(31,25,30);
   textSize(0.6*chunk);
-  text("£1.00",6*chunk,5.3*chunk)//cup price
-  text("£1.20",6*chunk,9.3*chunk)//milk price
-  text("£1.50",6*chunk,12.1*chunk)//boba price
+  text("$1.00",6*chunk,5.3*chunk)//cup price
+  text("$1.20",6*chunk,9.3*chunk)//milk price
+  text("$1.50",6*chunk,12.1*chunk)//boba price
+  text("$"+money,5.8*chunk,14.5*chunk) //display money
+  text("$"+this_sale+"+"+tip,17.9*chunk,14.5*chunk) //display this sale and tip
+  textSize(0.4*chunk); //label values
+  text("cash",4*chunk,14.9*chunk)
+  text("sale + tip",20.2*chunk,14.9*chunk)
+
 
   /*test print values
   text(held_item,100,100)
@@ -60,9 +66,6 @@ function draw() {
   //anger based payment managment
   if (anger >= 2) {tip = 0}
   if (anger >= 3) {this_sale = 0}
-
-  text(money,chunk,14*chunk) //display money
-  text(this_sale+"+"+tip,21*chunk,14*chunk) //display this sale and tip
 
   if (prep_cup == true && prep_milk == 2 && prep_boba == 2){ //completed drink detection
     rect(16.4*chunk, 11.4*chunk,3.6*chunk,1.2*chunk)
@@ -111,17 +114,26 @@ function mouseReleased() {
       if (held_item == "old_cup"){
         anger += 1
       }
+      else{
+        CalculateCash(1);
+      }
     }
     else if ((held_item == "old_milk" || held_item == "fresh_milk")&&(prep_milk==0 || prep_milk==1)){
       prep_milk += 1
       if (held_item == "old_milk"){
         anger += 1
       }
+      else{
+        CalculateCash(1.2);
+      }
     }
     else if ((held_item == "old_boba" || held_item == "fresh_boba")&&(prep_boba==0 || prep_boba==1)){
       prep_boba +=1
       if (held_item == "old_boba"){
         anger += 1
+      }
+      else{
+        CalculateCash(1.5);
       }
     }
   }
@@ -136,7 +148,17 @@ function ResetGame() {
   prep_milk = 0; //requires two scoops
   prep_boba = 0; //requires two scoops
   anger = 0; //two bad items and no tip, three bad items and no pay.
-  this_sale = 5;
-  tip = 2;
+  this_sale = 6;
+  tip = 1;
   drink_complete = false;
+}
+
+function CalculateCash(cost) {
+  if (money >= cost) {
+    money -= cost;
+  }
+  else {
+    money = 10;
+    ResetGame();
+  }
 }
