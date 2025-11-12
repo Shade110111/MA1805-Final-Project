@@ -31,8 +31,14 @@ function preload() {
 
 function setup() {
   //background is 125x75 pixels, each chunk is 5 pixels.
-  window_x = (windowWidth);
-  window_y = (windowWidth*0.6);
+  if (windowHeight < windowWidth*0.6){
+    window_x = (windowHeight*1.667);
+    window_y = (windowHeight);
+  }
+  else{
+    window_x = (windowWidth);
+    window_y = (windowWidth*0.6);
+  }
   createCanvas(window_x, window_y);
   noSmooth(); //sharpens pixel art
 }
