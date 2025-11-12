@@ -15,6 +15,7 @@ let prep_boba_image_2;
 let prep_milk_image_1;
 let prep_milk_image_2;
 let prep_milk_image_boba;
+let submit_button_image;
 
 function preload() {
   background_image = loadImage('background.png');
@@ -25,6 +26,7 @@ function preload() {
   prep_milk_image_1 = loadImage('prep_milk 1.png');
   prep_milk_image_2 = loadImage('prep_milk 2.png');
   prep_milk_image_boba = loadImage('prep_milk boba.png');
+  submit_button_image = loadImage('Submit_button_on.png');
 }
 
 function setup() {
@@ -84,7 +86,7 @@ function draw() {
   if (anger >= 3) {this_sale = 0}
 
   if (prep_cup == true && prep_milk == 2 && prep_boba == 2){ //completed drink detection
-    rect(16.4*chunk, 11.4*chunk,3.6*chunk,1.2*chunk)
+    image(submit_button_image,0,0,window_x,window_y);
     drink_complete = true
   }
 
