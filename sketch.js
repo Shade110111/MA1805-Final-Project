@@ -8,9 +8,17 @@ let this_sale = 6;
 let tip = 1;
 let drink_complete = false;
 let background_image;
+let cup_image;
+let cup_translucent_image;
+let prep_boba_image_1;
+let prep_boba_image_2;
 
 function preload() {
   background_image = loadImage('background.png');
+  cup_image = loadImage('Cup.png');
+  cup_translucent_image = loadImage('Cup Translucent.png');
+  prep_boba_image_1 = loadImage('prep_boba_image_1.png');
+  prep_boba_image_2 = loadImage('prep_boba_image_2.png');
 }
 
 function setup() {
@@ -70,6 +78,21 @@ function draw() {
   if (prep_cup == true && prep_milk == 2 && prep_boba == 2){ //completed drink detection
     rect(16.4*chunk, 11.4*chunk,3.6*chunk,1.2*chunk)
     drink_complete = true
+  }
+
+  //render prep cup
+  if (prep_cup == true){
+    image(cup_image,0,0,window_x,window_y);
+  }
+  if (prep_boba == 1){
+    image(prep_boba_image_1,0,0,window_x,window_y);
+  }
+  else if (prep_boba == 2){
+    image(prep_boba_image_2,0,0,window_x,window_y);
+  }
+
+  if (prep_cup == true){ //translucent cup film
+    image(cup_translucent_image,0,0,window_x,window_y);
   }
 
 }
