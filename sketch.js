@@ -53,8 +53,6 @@ function draw() {
 
   rect(10*chunk, 5*chunk,5*chunk,8*chunk)*/
 
-  
-
   //Prices
   fill(31,25,30);
   textSize(0.6*chunk);
@@ -183,6 +181,8 @@ function mouseReleased() {
   else{
     held_item=("null"); //mouse not released on prep station
   }
+  //truncate money
+  money = (round(money,2))
 }
 
 function ResetGame() {
