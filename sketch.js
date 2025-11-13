@@ -7,6 +7,7 @@ let money = 10;
 let this_sale = 6;
 let tip = 1;
 let drink_complete = false;
+let starting_time=120 //in seconds
 let background_image;
 let cup_image;
 let cup_translucent_image;
@@ -16,6 +17,7 @@ let prep_milk_image_1;
 let prep_milk_image_2;
 let prep_milk_image_boba;
 let submit_button_image;
+
 
 function preload() {
   background_image = loadImage('background.png');
@@ -65,12 +67,17 @@ function draw() {
   text("$1.00",6*chunk,5.3*chunk)//cup price
   text("$1.20",6*chunk,9.3*chunk)//milk price
   text("$1.50",6*chunk,12.1*chunk)//boba price
-  text("$"+money,5.8*chunk,14.5*chunk) //display money
-  text("$"+this_sale+"+"+tip,17.9*chunk,14.5*chunk) //display this sale and tip
+  textAlign('center')
+  text("$"+money+"/30",6.4*chunk,14.5*chunk) //display money
+  text("$"+this_sale+"+"+tip,18.6*chunk,14.5*chunk) //display this sale and tip
+  textAlign('left')
   textSize(0.4*chunk); //label values
   text("cash",4*chunk,14.9*chunk)
   text("sale + tip",20.2*chunk,14.9*chunk)
 
+  //timer (using millis() so it isnt framerate dependent) starting_time-millis()/1000
+  fill(237,202,76);
+  rect(6.4*chunk,0.4*chunk,((starting_time-millis()/1000)/starting_time)*9.8*chunk ,0.4*chunk)
 
   /*test print values
   text(held_item,100,100)
