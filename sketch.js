@@ -17,6 +17,7 @@ let prep_milk_image_1;
 let prep_milk_image_2;
 let prep_milk_image_boba;
 let submit_button_image;
+let start_screen_image;
 
 
 function preload() {
@@ -29,6 +30,7 @@ function preload() {
   prep_milk_image_2 = loadImage('prep_milk 2.png');
   prep_milk_image_boba = loadImage('prep_milk boba.png');
   submit_button_image = loadImage('Submit_button_on.png');
+  start_screen_image - loadImage('Start Screen.png');
 }
 
 function setup() {
@@ -77,7 +79,10 @@ function draw() {
 
   //timer (using millis() so it isnt framerate dependent) starting_time-millis()/1000
   fill(237,202,76);
-  rect(6.4*chunk,0.4*chunk,((starting_time-millis()/1000)/starting_time)*9.8*chunk ,0.4*chunk)
+  normalised_time = ((starting_time-millis()/1000)/starting_time)
+  if (normalised_time >0){
+    rect(6.4*chunk,0.4*chunk,(normalised_time)*9.8*chunk ,0.4*chunk)
+  }
 
   /*test print values
   text(held_item,100,100)
