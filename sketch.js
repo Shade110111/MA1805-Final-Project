@@ -18,6 +18,8 @@ let prep_milk_image_2;
 let prep_milk_image_boba;
 let submit_button_image;
 let start_screen_image;
+let win_screen_image;
+let lose_screen_image;
 
 
 function preload() {
@@ -30,7 +32,9 @@ function preload() {
   prep_milk_image_2 = loadImage('prep_milk 2.png');
   prep_milk_image_boba = loadImage('prep_milk boba.png');
   submit_button_image = loadImage('Submit_button_on.png');
-  start_screen_image - loadImage('Start Screen.png');
+  start_screen_image = loadImage('Start Screen.png');
+  win_screen_image = loadImage('win Screen.png');
+  lose_screen_image = loadImage('lose Screen.png');
 }
 
 function setup() {
