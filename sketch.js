@@ -7,7 +7,7 @@ let money = 10;
 let this_sale = 6;
 let tip = 1;
 let drink_complete = false;
-let starting_time=120 //in seconds
+let starting_time=90 //in seconds
 let background_image;
 let cup_image;
 let cup_translucent_image;
@@ -20,6 +20,8 @@ let submit_button_image;
 let start_screen_image;
 let win_screen_image;
 let lose_screen_image;
+let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
+let millis_prev_game = 0;
 
 
 function preload() {
@@ -83,17 +85,19 @@ function draw() {
 
   //timer (using millis() so it isnt framerate dependent) starting_time-millis()/1000
   fill(237,202,76);
-  normalised_time = ((starting_time-millis()/1000)/starting_time)
-  if (normalised_time >0){
+  normalised_time = ((starting_time-(millis()-millis_prev_game)/1000)/starting_time)
+  if (normalised_time >0){ //normalised time is time left/time limit
     rect(6.4*chunk,0.4*chunk,(normalised_time)*9.8*chunk ,0.4*chunk)
   }
-
-  /*test print values
-  text(held_item,100,100)
-  text(prep_cup,100,120)
-  text(prep_milk,100,140)
-  text(prep_boba,100,160)
-  text(drink_complete,100,180)*/
+  //time based screen switches
+  if (normalised_time<= 0){
+    if (money >= 30){
+      screen_tracker = 2
+    }
+    else{
+      screen_tracker = 3
+    }
+  }
 
   fill(226,52,52);
   strokeWeight(0);
@@ -135,6 +139,23 @@ function draw() {
     image(cup_translucent_image,0,0,window_x,window_y);
   }
 
+  //screen projection
+  if (screen_tracker == 1){
+    image(start_screen_image,0,0,window_x,window_y);
+  }
+  else if (screen_tracker == 2){
+    image(win_screen_image,0,0,window_x,window_y);
+  }
+  else if (screen_tracker == 3){
+    image(lose_screen_image,0,0,window_x,window_y);
+  }
+  /*//test print values
+  text(held_item,100,100)
+  text(prep_cup,100,120)
+  text(prep_milk,100,140)
+  text(prep_boba,100,160)
+  text(drink_complete,100,180)
+  text(millis_prev_game,100,200)*/
 }
 
 function mousePressed() {
@@ -161,8 +182,17 @@ function mousePressed() {
     }
   }
 
+  //out button
   if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk && drink_complete == true){ //submit drink detection
     money += this_sale + tip
+    ResetGame()
+  }
+  //segway from screens to gameplay
+  if (screen_tracker>0){
+    screen_tracker = 0
+    millis_prev_game = millis()
+    money = 10
+    
     ResetGame()
   }
 }
