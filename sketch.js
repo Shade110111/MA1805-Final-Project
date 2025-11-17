@@ -182,13 +182,13 @@ function mousePressed() {
     }
   }
   if (mouseX > 21*chunk && mouseX < 24*chunk) { //old ingredient
-    if (mouseY > chunk && mouseY < 4*chunk) { //cup
+    if (mouseY > chunk && mouseY < 4*chunk && recycled_cups >= 1) { //cup
       held_item = ("old_cup")
     }
-    else if (mouseY > 5*chunk && mouseY < 8*chunk) { //milk
+    else if (mouseY > 5*chunk && mouseY < 8*chunk && recycled_milk >= 1) { //milk
       held_item = ("old_milk")
     }
-    else if (mouseY > 9*chunk && mouseY < 12*chunk) { //boba
+    else if (mouseY > 9*chunk && mouseY < 12*chunk && recycled_boba >= 1) { //boba
       held_item = ("old_boba")
     }
   }
@@ -234,6 +234,7 @@ function mouseReleased() {
       prep_cup=true
       if (held_item == "old_cup"){
         anger += 1
+        recycled_cups -= 1
       }
       else{
         CalculateCash(1);
@@ -243,6 +244,7 @@ function mouseReleased() {
       prep_milk += 1
       if (held_item == "old_milk"){
         anger += 1
+        recycled_milk -= 1
       }
       else{
         CalculateCash(1.2);
@@ -252,6 +254,7 @@ function mouseReleased() {
       prep_boba +=1
       if (held_item == "old_boba"){
         anger += 1
+        recycled_boba -= 1
       }
       else{
         CalculateCash(1.5);
