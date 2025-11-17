@@ -23,6 +23,11 @@ let lose_screen_image;
 let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
 let millis_prev_game = 0;
 
+let old_seed = 0;
+let recycled_cups = 0;
+let recycled_milk = 0;
+let recycled_boba = 0;
+
 
 function preload() {
   background_image = loadImage('background.png');
@@ -90,7 +95,7 @@ function draw() {
     rect(6.4*chunk,0.4*chunk,(normalised_time)*9.8*chunk ,0.4*chunk)
   }
   //time based screen switches
-  if (normalised_time<= 0){
+  if (normalised_time<= 0 && screen_tracker == 0){
     if (money >= 30){
       screen_tracker = 2
     }
@@ -139,6 +144,12 @@ function draw() {
     image(cup_translucent_image,0,0,window_x,window_y);
   }
 
+  //old inventory
+  fill(0,0,0);
+  text(recycled_cups,17.55*chunk,0.75*chunk);
+  text(recycled_milk,17.55*chunk,1.75*chunk);
+  text(recycled_boba,17.55*chunk,2.75*chunk);
+
   //screen projection
   if (screen_tracker == 1){
     image(start_screen_image,0,0,window_x,window_y);
@@ -185,6 +196,19 @@ function mousePressed() {
   //out button
   if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk && drink_complete == true){ //submit drink detection
     money += this_sale + tip
+    //give old ingredients
+    old_seed = int(random(3,9))//selects intager between 3 and 8, 3 cup, 4 milk, 5 boba, 6 cup and milk, 7 milk and boba, 8 cup and boba
+    if (old_seed>2){
+      if (old_seed == 3 || old_seed == 6 || old_seed == 8){
+        recycled_cups +=1
+      }
+      if (old_seed == 4 || old_seed == 6 || old_seed == 7){
+        recycled_milk +=1
+      }
+      if (old_seed == 5 || old_seed == 7 || old_seed == 8){
+        recycled_boba +=1
+      }
+    }
     ResetGame()
   }
   //segway from screens to gameplay
@@ -192,6 +216,10 @@ function mousePressed() {
     screen_tracker = 0
     millis_prev_game = millis()
     money = 10
+    
+    recycled_cups=0
+    recycled_milk=0
+    recycled_boba=0
     
     ResetGame()
   }
@@ -229,10 +257,10 @@ function mouseReleased() {
         CalculateCash(1.5);
       }
     }
+    
   }
-  else{
-    held_item=("null"); //mouse not released on prep station
-  }
+  held_item=("null"); //mouse not released on prep station or item placed in prep station
+  
   //truncate money
   money = (round(money,2))
 }
