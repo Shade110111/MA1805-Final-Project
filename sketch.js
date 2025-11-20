@@ -20,6 +20,7 @@ let submit_button_image;
 let start_screen_image;
 let win_screen_image;
 let lose_screen_image;
+let warning_indicator_image;
 let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
 let millis_prev_game = 0;
 
@@ -27,6 +28,10 @@ let old_seed = 0;
 let recycled_cups = 0;
 let recycled_milk = 0;
 let recycled_boba = 0;
+
+let indicator_x=0;
+let indicator_y=0;
+let indicator_time=0;
 
 
 function preload() {
@@ -42,6 +47,7 @@ function preload() {
   start_screen_image = loadImage('Start Screen.png');
   win_screen_image = loadImage('win Screen.png');
   lose_screen_image = loadImage('lose Screen.png');
+  warning_indicator_image = loadImage('Warning.gif')
 }
 
 function setup() {
@@ -160,13 +166,19 @@ function draw() {
   else if (screen_tracker == 3){
     image(lose_screen_image,0,0,window_x,window_y);
   }
-  /*//test print values
+  //test print values
   text(held_item,100,100)
   text(prep_cup,100,120)
   text(prep_milk,100,140)
   text(prep_boba,100,160)
   text(drink_complete,100,180)
-  text(millis_prev_game,100,200)*/
+  text(indicator_time,100,200)
+
+  //warnings
+  if (millis()<indicator_time){
+    image(warning_indicator_image,indicator_x,indicator_y,2*chunk,2*chunk);
+    
+  }
 }
 
 function mousePressed() {
@@ -182,8 +194,13 @@ function mousePressed() {
     }
   }
   if (mouseX > 21*chunk && mouseX < 24*chunk) { //old ingredient
-    if (mouseY > chunk && mouseY < 4*chunk && recycled_cups >= 1) { //cup
-      held_item = ("old_cup")
+    if (mouseY > chunk && mouseY < 4*chunk) { //cup
+      if (recycled_cups >= 1){
+        held_item = ("old_cup")
+      }
+      else{
+        warning_indicator(2,2)
+      }
     }
     else if (mouseY > 5*chunk && mouseY < 8*chunk && recycled_milk >= 1) { //milk
       held_item = ("old_milk")
@@ -287,4 +304,12 @@ function CalculateCash(cost) {
     money = 10;
     ResetGame();
   }
+}
+
+function Warning_indicator(x,y){
+  indicator_x=x*chunk;
+  indicator_y=y*chunk;
+  indicator_time=millis()+5000
+  image(warning_indicator_image,x,y,2*chunk,2*chunk);
+  held_item = "69"
 }
