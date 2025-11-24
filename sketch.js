@@ -87,7 +87,7 @@ function draw() {
   text("$1.20",6*chunk,9.3*chunk)//milk price
   text("$1.50",6*chunk,12.1*chunk)//boba price
   textAlign('center')
-  text("$"+money+"/30",6.4*chunk,14.5*chunk) //display money
+  text("$"+money+"/25",6.4*chunk,14.5*chunk) //display money
   text("$"+this_sale+"+"+tip,18.6*chunk,14.5*chunk) //display this sale and tip
   textAlign('left')
   textSize(0.4*chunk); //label values
@@ -101,13 +101,11 @@ function draw() {
     rect(6.4*chunk,0.4*chunk,(normalised_time)*9.8*chunk ,0.4*chunk)
   }
   //time based screen switches
-  if (normalised_time<= 0 && screen_tracker == 0){
-    if (money >= 30){
+    if (money >= 25){
       screen_tracker = 2
     }
-    else{
+  if (normalised_time<= 0 && screen_tracker == 0){
       screen_tracker = 3
-    }
   }
 
   fill(226,52,52);
