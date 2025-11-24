@@ -241,8 +241,11 @@ function mousePressed() {
     }
     ResetGame()
   }
+}
+
+function mouseReleased() {
   //segway from screens to gameplay
-  if (screen_tracker>0){ //add play button code here if tracker = 2 or 3
+  if (screen_tracker>0){ //add play button code here if tracker = 2 or 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     screen_tracker = 0
     millis_prev_game = millis()
     money = 10
@@ -253,9 +256,7 @@ function mousePressed() {
     
     ResetGame()
   }
-}
 
-function mouseReleased() {
   if (mouseX>10*chunk && mouseX<15*chunk && mouseY>5*chunk && mouseY<13*chunk){ //mouse released on prep station
     if (held_item != "old_cup" && held_item != "fresh_cup" && prep_cup==false){
       held_item=("null"); //nothing will happen if you try to use milk or boba without a cup
