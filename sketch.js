@@ -2,6 +2,7 @@ let held_item = ("null");
 let prep_cup = false;
 let prep_milk = 0; //requires two scoops
 let prep_boba = 0; //requires two scoops
+let prep_percentage = 0.0;
 let anger = 0; //two bad items and no tip, three bad items and no pay.
 let money = 10;
 let this_sale = 6;
@@ -21,6 +22,7 @@ let start_screen_image;
 let win_screen_image;
 let lose_screen_image;
 let warning_indicator_image;
+let cursor_image;
 let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
 let millis_prev_game = 0;
 
@@ -47,7 +49,8 @@ function preload() {
   start_screen_image = loadImage('Start Screen.gif');
   win_screen_image = loadImage('win Screen.png');
   lose_screen_image = loadImage('lose Screen.png');
-  warning_indicator_image = loadImage('Warning.gif')
+  warning_indicator_image = loadImage('Warning.gif');
+  cursor_image = loadImage('cursor.png');
 }
 
 function setup() {
@@ -62,6 +65,7 @@ function setup() {
   }
   createCanvas(window_x, window_y);
   noSmooth(); //sharpens pixel art
+  noCursor();
 }
 
 
@@ -117,6 +121,10 @@ function draw() {
   //anger based payment managment
   if (anger >= 2) {tip = 0}
   if (anger >= 3) {this_sale = 0}
+
+  //drink completion meter
+  fill(162,52,52);
+  rect(16.8*chunk,12.8*chunk,2.8*prep_percentage*chunk,0.2*chunk);
 
   if (prep_cup == true && prep_milk == 2 && prep_boba == 2){ //completed drink detection
     image(submit_button_image,0,0,window_x,window_y);
@@ -182,6 +190,10 @@ function draw() {
   if (anger >= 2){
     image(warning_indicator_image,19*chunk,13.8*chunk,1*chunk,1*chunk);
   }
+
+  //replace cursor
+  image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
+
 }
 
 function mousePressed() {
@@ -297,6 +309,13 @@ function mouseReleased() {
   
   //truncate money
   money = (round(money,2))
+
+  //calculate prep percentage
+  prep_percentage = 0
+  if (prep_cup){ prep_percentage += 1/5}
+  prep_percentage += prep_milk/5
+  prep_percentage += prep_boba/5
+
 }
 
 function ResetGame() {
