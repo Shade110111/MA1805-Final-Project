@@ -234,7 +234,9 @@ function mousePressed() {
       }
     }
   }
+}
 
+function mouseReleased() {
   //out button
   if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk && drink_complete == true){ //submit drink detection
     money += this_sale + tip
@@ -253,12 +255,9 @@ function mousePressed() {
     }
     ResetGame()
   }
-}
 
-function mouseReleased() {
   //segway from screens to gameplay
-  if (screen_tracker>0){ //add play button code here if tracker = 2 or 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    screen_tracker = 0
+  if ((screen_tracker==1)||(screen_tracker>1 && mouseX > 11.6*chunk && mouseX < 12.1*chunk && mouseY > 4.8*chunk && mouseY < 6.6*chunk)){
     millis_prev_game = millis()
     money = 10
     
@@ -340,7 +339,9 @@ function CalculateCash(cost) {
 }
 
 function warning_indicator(x,y){
-  indicator_x=x*chunk;
-  indicator_y=y*chunk;
-  indicator_time=millis()+5000
+  if (screen_tracker == 0){
+    indicator_x=x*chunk;
+    indicator_y=y*chunk;
+    indicator_time=millis()+5000
+  }
 }
