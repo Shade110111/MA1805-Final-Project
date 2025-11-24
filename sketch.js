@@ -242,7 +242,7 @@ function mousePressed() {
     ResetGame()
   }
   //segway from screens to gameplay
-  if (screen_tracker>0){
+  if (screen_tracker>0){ //add play button code here if tracker = 2 or 3
     screen_tracker = 0
     millis_prev_game = millis()
     money = 10
