@@ -44,7 +44,7 @@ function preload() {
   prep_milk_image_2 = loadImage('prep_milk 2.png');
   prep_milk_image_boba = loadImage('prep_milk boba.png');
   submit_button_image = loadImage('Submit_button_on.png');
-  start_screen_image = loadImage('Start Screen.png');
+  start_screen_image = loadImage('Start Screen.gif');
   win_screen_image = loadImage('win Screen.png');
   lose_screen_image = loadImage('lose Screen.png');
   warning_indicator_image = loadImage('Warning.gif')
@@ -166,6 +166,7 @@ function draw() {
   else if (screen_tracker == 3){
     image(lose_screen_image,0,0,window_x,window_y);
   }
+  /*
   //test print values
   text(held_item,100,100)
   text(prep_cup,100,120)
@@ -173,11 +174,15 @@ function draw() {
   text(prep_boba,100,160)
   text(drink_complete,100,180)
   text(indicator_time,100,200)
+  */
 
-  //warnings
+  //no old ingredients warning
   if (millis()<indicator_time){
-    image(warning_indicator_image,indicator_x,indicator_y,2*chunk,2*chunk);
-    
+    image(warning_indicator_image,indicator_x,indicator_y,1*chunk,1*chunk);
+  }
+  //raging warning
+  if (anger >= 2){
+    image(warning_indicator_image,19*chunk,13.8*chunk,1*chunk,1*chunk);
   }
 }
 
@@ -199,14 +204,24 @@ function mousePressed() {
         held_item = ("old_cup")
       }
       else{
-        warning_indicator(2,2)
+        warning_indicator(17.8,0.1)
       }
     }
-    else if (mouseY > 5*chunk && mouseY < 8*chunk && recycled_milk >= 1) { //milk
+    else if (mouseY > 5*chunk && mouseY < 8*chunk) { //milk
+      if (recycled_milk >= 1){
       held_item = ("old_milk")
+      }
+      else{
+        warning_indicator(17.8,1.1)
+      }
     }
-    else if (mouseY > 9*chunk && mouseY < 12*chunk && recycled_boba >= 1) { //boba
+    else if (mouseY > 9*chunk && mouseY < 12*chunk) { //boba
+      if (recycled_boba >= 1){
       held_item = ("old_boba")
+      }
+      else{
+        warning_indicator(17.8,2.1)
+      }
     }
   }
 
@@ -306,10 +321,8 @@ function CalculateCash(cost) {
   }
 }
 
-function Warning_indicator(x,y){
+function warning_indicator(x,y){
   indicator_x=x*chunk;
   indicator_y=y*chunk;
   indicator_time=millis()+5000
-  image(warning_indicator_image,x,y,2*chunk,2*chunk);
-  held_item = "69"
 }
