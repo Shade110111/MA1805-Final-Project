@@ -9,6 +9,7 @@ let this_sale = 6;
 let tip = 1;
 let drink_complete = false;
 let starting_time=90 //in seconds
+
 let background_image;
 let cup_image;
 let cup_translucent_image;
@@ -23,6 +24,7 @@ let win_screen_image;
 let lose_screen_image;
 let warning_indicator_image;
 let cursor_image;
+
 let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
 let millis_prev_game = 0;
 
@@ -34,6 +36,9 @@ let recycled_boba = 0;
 let indicator_x=0;
 let indicator_y=0;
 let indicator_time=0;
+
+let store_jingle_sound;
+let store_ambiance_sound;
 
 
 function preload() {
@@ -51,6 +56,8 @@ function preload() {
   lose_screen_image = loadImage('lose Screen.png');
   warning_indicator_image = loadImage('Warning.gif');
   cursor_image = loadImage('cursor.png');
+  store_jingle_sound = loadSound('ScreenRecording_11-25-2025 5-27-32 pm_1.mp3');
+  store_ambiance_sound = loadSound('shop-background-tesco-store-71549.mp3');
 }
 
 function setup() {
@@ -66,6 +73,11 @@ function setup() {
   createCanvas(window_x, window_y);
   noSmooth(); //sharpens pixel art
   noCursor();
+
+  store_jingle_sound.loop();
+  store_jingle_sound.amp(0.5);
+  store_ambiance_sound.loop();
+  store_ambiance_sound.amp(0.6);
 }
 
 
@@ -195,6 +207,13 @@ function draw() {
   image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
 
 }
+
+function mouseClicked(){ //enable music
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
+  }
+}
+
 
 function mousePressed() {
   if (mouseX > chunk && mouseX < 4*chunk) { //fresh ingredient
