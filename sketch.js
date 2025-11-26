@@ -174,6 +174,15 @@ function draw() {
   text(recycled_milk,17.55*chunk,1.75*chunk);
   text(recycled_boba,17.55*chunk,2.75*chunk);
 
+  //no old ingredients warning
+  if (millis()<indicator_time){
+    image(warning_indicator_image,indicator_x,indicator_y,1*chunk,1*chunk);
+  }
+  //raging warning
+  if (anger >= 2){
+    image(warning_indicator_image,19*chunk,13.8*chunk,1*chunk,1*chunk);
+  }
+
   //screen projection
   if (screen_tracker == 1){
     image(start_screen_image,0,0,window_x,window_y);
@@ -193,15 +202,6 @@ function draw() {
   text(drink_complete,100,180)
   text(indicator_time,100,200)
   */
-
-  //no old ingredients warning
-  if (millis()<indicator_time){
-    image(warning_indicator_image,indicator_x,indicator_y,1*chunk,1*chunk);
-  }
-  //raging warning
-  if (anger >= 2){
-    image(warning_indicator_image,19*chunk,13.8*chunk,1*chunk,1*chunk);
-  }
 
   //replace cursor
   image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
