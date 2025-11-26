@@ -257,7 +257,8 @@ function mouseReleased() {
   }
 
   //segway from screens to gameplay
-  if ((screen_tracker==1)||(screen_tracker>1 && mouseX > 11.6*chunk && mouseX < 12.1*chunk && mouseY > 4.8*chunk && mouseY < 6.6*chunk)){
+  if ((screen_tracker==1)||(screen_tracker>1 && mouseX > 11.6*chunk && mouseX < 13.4*chunk && mouseY > 4.8*chunk && mouseY < 6.6*chunk)){
+    screen_tracker = 0
     millis_prev_game = millis()
     money = 10
     
