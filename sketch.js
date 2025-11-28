@@ -24,6 +24,9 @@ let win_screen_image;
 let lose_screen_image;
 let warning_indicator_image;
 let cursor_image;
+let cursor_cup_image;
+let cursor_milk_image;
+let cursor_boba_image;
 
 let screen_tracker = 1; //0 is off, 1 is start,2 is win, 3 is lose
 let millis_prev_game = 0;
@@ -56,6 +59,9 @@ function preload() {
   lose_screen_image = loadImage('lose Screen.png');
   warning_indicator_image = loadImage('Warning.gif');
   cursor_image = loadImage('cursor.png');
+  cursor_cup_image = loadImage('cursor_cup.png');
+  cursor_milk_image = loadImage('cursor_milk.png');
+  cursor_boba_image = loadImage('cursor_boba.png');
   store_jingle_sound = loadSound('ScreenRecording_11-25-2025 5-27-32 pm_1.mp3');
   store_ambiance_sound = loadSound('shop-background-tesco-store-71549.mp3');
 }
@@ -204,7 +210,18 @@ function draw() {
   */
 
   //replace cursor
-  image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
+  if (held_item == "old_cup" || held_item == "fresh_cup"){
+    image(cursor_cup_image,mouseX,mouseY,1*chunk,1*chunk)
+  } 
+  else if (held_item == "old_milk" || held_item == "fresh_milk"){
+    image(cursor_milk_image,mouseX,mouseY,1*chunk,1*chunk)
+  } 
+  else if (held_item == "old_boba" || held_item == "fresh_boba"){
+    image(cursor_boba_image,mouseX,mouseY,1*chunk,1*chunk)
+  } 
+  else {
+    image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
+  }
 
 }
 
