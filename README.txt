@@ -18,4 +18,8 @@ indicates how complete the drink is to draw attention to a missing boba or such,
 exclamation marks appear next to the 0 in stored ingredients if the player tries to use an
 ingredient but there is none left, otherwise it works.
 
-All the art is my own.
+I experimented with audio responses from the customer pitched up however these would
+interrupt the game too much so I made them sounds of disgust instead however even text
+responses were too distracting to keep the game fun.
+
+All the pixel art is my own.
