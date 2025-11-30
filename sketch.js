@@ -89,9 +89,9 @@ function setup() {
   noCursor();
 
   store_jingle_sound.loop();
-  store_jingle_sound.amp(0.5);
+  store_jingle_sound.amp(0.3);
   store_ambiance_sound.loop();
-  store_ambiance_sound.amp(0.6);
+  store_ambiance_sound.amp(0.4);
 }
 
 
