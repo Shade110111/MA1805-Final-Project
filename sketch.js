@@ -42,6 +42,10 @@ let indicator_time=0;
 
 let store_jingle_sound;
 let store_ambiance_sound;
+let cup_sound;
+let milk_1_sound;
+let milk_2_sound;
+let boba_sound;
 
 
 function preload() {
@@ -64,6 +68,10 @@ function preload() {
   cursor_boba_image = loadImage('cursor_boba.png');
   store_jingle_sound = loadSound('ScreenRecording_11-25-2025 5-27-32 pm_1.mp3');
   store_ambiance_sound = loadSound('shop-background-tesco-store-71549.mp3');
+  cup_sound = loadSound('place_cup_sound.wav');
+  milk_1_sound = loadSound('fill_cup_1_sound.wav');
+  milk_2_sound = loadSound('fill_cup_2_sound.wav');
+  boba_sound = loadSound('add_boba_sound.wav');
 }
 
 function setup() {
@@ -305,38 +313,51 @@ function mouseReleased() {
     ResetGame()
   }
 
+  //load prep station
   if (mouseX>10*chunk && mouseX<15*chunk && mouseY>5*chunk && mouseY<13*chunk){ //mouse released on prep station
     if (held_item != "old_cup" && held_item != "fresh_cup" && prep_cup==false){
       held_item=("null"); //nothing will happen if you try to use milk or boba without a cup
     } 
     else if ((held_item == "old_cup" || held_item == "fresh_cup")&&prep_cup==false){
       prep_cup=true
+      cup_sound.play()
+      //old/new cost
       if (held_item == "old_cup"){
         anger += 1
         recycled_cups -= 1
       }
       else{
-        CalculateCash(1);
+        CalculateCash(1); //costs $1
       }
     }
     else if ((held_item == "old_milk" || held_item == "fresh_milk")&&(prep_milk==0 || prep_milk==1)){
       prep_milk += 1
+      //play correct sound
+      if (prep_milk == 1){
+        milk_1_sound.play()
+      }
+      else {
+        milk_2_sound.play()
+      }
+      //old/new cost
       if (held_item == "old_milk"){
         anger += 1
         recycled_milk -= 1
       }
       else{
-        CalculateCash(1.2);
+        CalculateCash(1.2);//costs $1.20
       }
     }
     else if ((held_item == "old_boba" || held_item == "fresh_boba")&&(prep_boba==0 || prep_boba==1)){
       prep_boba +=1
+      boba_sound.play()
+      //old/new cost
       if (held_item == "old_boba"){
         anger += 1
         recycled_boba -= 1
       }
       else{
-        CalculateCash(1.5);
+        CalculateCash(1.5);//costs $1.50
       }
     }
     

@@ -8,7 +8,9 @@ you arent getting paid. collect trashed products with every sale.
 
 I composed a monotonous, upbeat tune to slowly drive you crazy. An exxageration of 
 the dull repeated songs often played in large stores with restrictions on what can 
-be played, alongside some ambiance I downloaded from the internet.
+be played. I also downloaded some shop ambience from the internet and recorded sloshing, 
+pouring and placing sounds for all the ingredients with a plastic cup and Audacity to clean
+up the recordings.
 
 a rage bar indicates how bad the drink is, if there are two bad ingredients an exclamation mark
 appears to draw attention to the loss of tip or the whole sale, a bar below the out button
