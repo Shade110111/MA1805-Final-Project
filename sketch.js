@@ -95,6 +95,7 @@ function setup() {
   cnv.position(x, y);
   noSmooth(); //sharpens pixel art
   noCursor();
+  background(0);
 
   store_jingle_sound.loop();
   store_jingle_sound.amp(0.3);
