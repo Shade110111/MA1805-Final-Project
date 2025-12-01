@@ -88,7 +88,11 @@ function setup() {
     window_x = (windowWidth);
     window_y = (windowWidth*0.6);
   }
-  createCanvas(window_x, window_y);
+
+  var cnv = createCanvas(window_x, window_y);
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
   noSmooth(); //sharpens pixel art
   noCursor();
 
