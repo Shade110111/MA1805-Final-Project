@@ -20,6 +20,8 @@ ingredient but there is none left, otherwise it works.
 
 I experimented with audio responses from the customer pitched up however these would
 interrupt the game too much so I made them sounds of disgust instead however even text
-responses were too distracting to keep the game fun.
+responses were too distracting to keep the game fun, instead the button press sound I 
+created is pitched up unpleasantly if the out button is pressed and the customer is refusing
+to pay.
 
 All the pixel art is my own.
