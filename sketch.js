@@ -46,6 +46,8 @@ let cup_sound;
 let milk_1_sound;
 let milk_2_sound;
 let boba_sound;
+let button_sound;
+let button_sound_bad;
 
 
 function preload() {
@@ -72,6 +74,8 @@ function preload() {
   milk_1_sound = loadSound('fill_cup_1_sound.wav');
   milk_2_sound = loadSound('fill_cup_2_sound.wav');
   boba_sound = loadSound('add_boba_sound.wav');
+  button_sound = loadSound('button click.wav');
+  button_sound_bad = loadSound('button click fail.wav');
 }
 
 function setup() {
@@ -284,7 +288,13 @@ function mouseReleased() {
   //out button
   if (mouseX >16.4*chunk && mouseX <20*chunk && mouseY >11.4 && mouseY <12.6*chunk && drink_complete == true){ //submit drink detection
     money += this_sale + tip
-    //give old ingredients
+    if (this_sale == 0){ //if player made no money on this sale, play offputting sound
+      button_sound_bad.play()
+    }
+    else{
+      button_sound.play()
+    }
+      //give old ingredients
     old_seed = int(random(3,9))//selects intager between 3 and 8, 3 cup, 4 milk, 5 boba, 6 cup and milk, 7 milk and boba, 8 cup and boba
     if (old_seed>2){
       if (old_seed == 3 || old_seed == 6 || old_seed == 8){
@@ -302,6 +312,7 @@ function mouseReleased() {
 
   //segway from screens to gameplay
   if ((screen_tracker==1)||(screen_tracker>1 && mouseX > 11.6*chunk && mouseX < 13.4*chunk && mouseY > 4.8*chunk && mouseY < 6.6*chunk)){
+    button_sound.play()
     screen_tracker = 0
     millis_prev_game = millis()
     money = 10
