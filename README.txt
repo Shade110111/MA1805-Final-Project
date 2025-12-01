@@ -13,10 +13,11 @@ pouring and placing sounds for all the ingredients with a plastic cup and Audaci
 up the recordings.
 
 a rage bar indicates how bad the drink is, if there are two bad ingredients an exclamation mark
-appears to draw attention to the loss of tip or the whole sale, a bar below the out button
-indicates how complete the drink is to draw attention to a missing boba or such,
+appears to draw attention to the loss of tip or the whole sale, if no money is made on the sale,
+the out button makes a sharp jabbing noise instead. A bar below the out button
+indicates how complete the drink is to draw attention to a missing boba or milk,
 exclamation marks appear next to the 0 in stored ingredients if the player tries to use an
-ingredient but there is none left, otherwise it works.
+ingredient but there is none left.
 
 I experimented with audio responses from the customer pitched up however these would
 interrupt the game too much so I made them sounds of disgust instead however even text
