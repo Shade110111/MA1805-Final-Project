@@ -219,16 +219,16 @@ function draw() {
 
   //replace cursor
   if (held_item == "old_cup" || held_item == "fresh_cup"){
-    image(cursor_cup_image,mouseX,mouseY,1*chunk,1*chunk)
+    image(cursor_cup_image,mouseX,mouseY,5*chunk,5*chunk)
   } 
   else if (held_item == "old_milk" || held_item == "fresh_milk"){
-    image(cursor_milk_image,mouseX,mouseY,1*chunk,1*chunk)
+    image(cursor_milk_image,mouseX,mouseY,5*chunk,5*chunk)
   } 
   else if (held_item == "old_boba" || held_item == "fresh_boba"){
-    image(cursor_boba_image,mouseX,mouseY,1*chunk,1*chunk)
+    image(cursor_boba_image,mouseX,mouseY,5*chunk,5*chunk)
   } 
   else {
-    image(cursor_image,mouseX,mouseY,1*chunk,1*chunk)
+    image(cursor_image,mouseX,mouseY,5*chunk,5*chunk)
   }
 
 }
