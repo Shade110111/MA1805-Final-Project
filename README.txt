@@ -52,8 +52,8 @@ button and starting a new game created lots of issues (compilaton issues due to 
 Originally it was hard to tell that for a new player that the numbers corresponded to old ingredients
 so I added animated notificatione exclamation marks, It was hard to tell two boba needed to be in the cup
 if the milk was already poured so I added a progress bar under the out button which would only light up 
-when the drink was complete. Libraries in index.html was not capitalised by default and git pages are case
-sensitive while live server is not.
+when the drink was complete. Undeclared variables sometimes work with live server but do not work with 
+git pages so I corrected this for 'chunk'.
 
 github repo: https://github.com/Shade110111/MA1805-Final-Project
 

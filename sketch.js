@@ -9,7 +9,7 @@ let this_sale = 6;
 let tip = 1;
 let drink_complete = false;
 let starting_time=90 //in seconds
-let chunk = 0;
+let chunk = 0.00;
 
 let background_image;
 let cup_image;
