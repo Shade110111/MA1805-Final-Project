@@ -52,10 +52,11 @@ button and starting a new game created lots of issues (compilaton issues due to 
 Originally it was hard to tell that for a new player that the numbers corresponded to old ingredients
 so I added animated notificatione exclamation marks, It was hard to tell two boba needed to be in the cup
 if the milk was already poured so I added a progress bar under the out button which would only light up 
-when the drink was complete. 'chunk' was defined in draw not setup and so was called by mouse clicked before
-it was defined.
+when the drink was complete. Background.png had a hidden character in the title due to the way I exported it
+which allowed it to run in live server but cause a 404 error in git pages, I renamed it to itself and it worked.
 
 github repo: https://github.com/Shade110111/MA1805-Final-Project
+git pages: https://shade110111.github.io/MA1805-Final-Project/
 
 links to resources used:
 https://www.w3schools.com/css/css_background.asp
