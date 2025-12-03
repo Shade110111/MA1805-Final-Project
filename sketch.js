@@ -52,7 +52,7 @@ let button_sound_bad;
 
 
 function preload() {
-  background_image = loadImage('background.png');
+  background_image = loadImage('Background.png');
   cup_image = loadImage('Cup.png');
   cup_translucent_image = loadImage('Cup Translucent.png');
   prep_boba_image_1 = loadImage('prep_boba_image_1.png');
