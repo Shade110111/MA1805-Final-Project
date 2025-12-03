@@ -102,12 +102,13 @@ function setup() {
   store_jingle_sound.amp(0.3);
   store_ambiance_sound.loop();
   store_ambiance_sound.amp(0.4);
+
+  chunk = window_x/25 //a chunk is a workable unit of measurment for colliders
 }
 
 
 function draw() {
   image(background_image,0,0,window_x,window_y);
-  chunk = window_x/25 //a chunk is a workable unit of measurment for colliders
   
   /*visualise colliders
   fill(255,255,255);
