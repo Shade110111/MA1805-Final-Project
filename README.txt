@@ -30,6 +30,8 @@ by conversations we have had. The store music was created using BeepBox and edit
 I was also inspired by an old game Papa's Pizzeria and Penguin Diner: Restaurant Dash, two basic
 food making games that I used to enjoy where food quality is paramount, looking only at the maths
 required to formulate the optimal game, this game is more advanced, only shorter.
+https://store.steampowered.com/app/3259470/Papas_Pizzeria_Deluxe/
+https://apps.apple.com/us/app/penguin-diner-restaurant-dash/id962991930
 
 Audio:
 I composed a monotonous, upbeat tune to slowly drive you crazy. An exxageration of 
